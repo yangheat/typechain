@@ -7,6 +7,9 @@ npm install -g yarn
 ```
 yarn global add typescript
 ```
+* crypto
+yarn add crypto-js
+
 * typescript start
 ```
 yarn start
