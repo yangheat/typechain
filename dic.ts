@@ -1,5 +1,3 @@
-console.clear()
-
 type Words = {
     [key: string]: string
 }
@@ -7,39 +5,60 @@ type Words = {
 class Dictionary {
     private words: Words
     
-    constructor () {
+    constructor() {
         this.words = {}
     }
 
     add (word: Word) {
-        if (this.words[word.term] === undefined) {
+        try {
+            if (this.words[word.term]) {
+                throw (`Failed to add ${word.term} because it already exists`)
+            }
+
             this.words[word.term] = word.def
+        } catch (e) {
+            console.warn(e)
         }
     }
 
-    update (term: string, def: string) {
+    update (word: string, def: string) {
         try {
-            if (this.words[term] === undefined) {
-                throw (`Failed to update because there is no "${term}"`)
+            if (this.words[word] === undefined) {
+                throw (`Failed to update ${word} because it does not exist`)
             }
 
-            this.words[term] = def
+            this.words[word] = def
         } catch (e) {
-            console.error(e)
+            console.warn(e)
         }
     }
 
-    delete (term: string) {
+    delete (word: string) {
         try {
-            if (this.words[term] === undefined) {
-                throw (`Failed to delete because there is no "${term}".`)
+            if (this.words[word] === undefined) {
+                throw (`Failed to delete ${word} because it does not exist`)
             }
-            delete this.words[term]
+
+            delete this.words[word]
         } catch (e) {
-            console.error(e)
+            console.warn(e)
+        }
+    }
+
+    get (word: string): string | void {
+        try {
+            if (this.words[word] === undefined) {
+                throw (`Failed to get ${word} because it does not exist`)
+            }
+
+            console.log(`${word}: ${this.words[word]}`)
+            return this.words[word]
+        } catch (e) {
+            console.warn(e)
         }
     }
 }
+
 
 class Word {
     constructor(
@@ -48,17 +67,16 @@ class Word {
     ) {}
 }
 
-const dict = new Dictionary()
+const dictionary = new Dictionary()
 const kimchi = new Word('kimchi', '한국 전통 음식')
-dict.add(kimchi)
-console.log(dict)
 
-dict.update('kimchi1', 'korean trandition food')
-
-dict.update('kimchi', 'korean trandition food')
-console.log(dict)
-
-dict.delete('kimchi1')
-
-dict.delete('kimchi')
-console.log(dict)
+dictionary.add(kimchi)
+dictionary.get('kimchi')
+dictionary.get('bulgogi')
+dictionary.add(kimchi)
+dictionary.update('kimchi1', 'korean trandition food')
+dictionary.update('kimchi', 'korean trandition food')
+dictionary.get('kimchi')
+dictionary.delete('kimchi1')
+dictionary.delete('kimchi')
+dictionary.get('kimchi')
