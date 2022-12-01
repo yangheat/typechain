@@ -1,9 +1,16 @@
 {
+    // js로 변경할 위치
+    "include": [
+        "src"
+    ],
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "ES2015",
-        "sourceMap": true
-    },
-    "include": ["index.ts"],
-    "exclude": ["node_modules"]
+        // js 파일이 생성될 디렉터리 위치
+        "outDir": "build",
+        // 어떤 버전의 자바스크립트로 컴파일할지 설정
+        "target": "ES6",
+        // target 실행 환경
+        // 즉, 라이브러리를 import함에따라 기능을 사용
+        // 예를 들어 'DOM'(브라우저)을 추가함에따라 'document', 'localStorage' 등의 자동 완성과 기능을 제공
+        "lib": ["ES6",]
+    }
 }

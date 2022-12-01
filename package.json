@@ -1,16 +1,22 @@
 {
   "name": "typechain",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/yangheat/typechain.git",
-  "author": "yangheat <yangheat@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "crypto-js": "^4.0.0",
-    "typescript": "^4.9.3"
-  },
+  "description": "",
   "scripts": {
-    "start": "node index.js",
-    "prestart": "yarn tsc"
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangheat/typechain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yangheat/typechain/issues"
+  },
+  "homepage": "https://github.com/yangheat/typechain#readme",
+  "devDependencies": {
+    "typescript": "^4.9.3"
   }
 }
